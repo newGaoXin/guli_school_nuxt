@@ -168,7 +168,7 @@ export default {
     }
   },
   created() {
-    console.log(this.$route.query.token)
+    // console.log(this.$route.query.token)
     this.token = this.$route.query.token
     if (this.token) {
       this.wxLogin()
