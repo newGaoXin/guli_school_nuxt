@@ -7,5 +7,11 @@ export default {
       url: `/eduservice/teacherFont/pageList/${current}/${limit}`,
       method: 'post'
     })
+  },
+  getById(teacherId) {
+    return request({
+      url: `/eduservice/teacherFont/${teacherId}`,
+      method: 'get'
+    })
   }
 }
