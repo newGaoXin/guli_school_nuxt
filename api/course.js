@@ -20,5 +20,11 @@ export default {
       url: `/eduservice/subject/getSubjectList`,
       method: 'get'
     })
+  },
+  getById(courseId) {
+    return request({
+      url: `/eduservice/courseFont/${courseId}`,
+      method: 'get'
+    })
   }
 }
