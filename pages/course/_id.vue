@@ -137,7 +137,11 @@
                                 :key="video.id"
                                 class="lh-menu-second ml30"
                               >
-                                <a href="#" title>
+                                <a
+                                  :href="'/player/' + video.videoSourceId"
+                                  :title="video.title"
+                                  target="_blank"
+                                >
                                   <span
                                     v-if="Number(video.isFree) === 0"
                                     class="fr"
