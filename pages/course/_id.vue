@@ -46,7 +46,13 @@
               </span>
             </section>
             <section class="c-attr-mt">
-              <a href="#" title="立即观看" class="comm-btn c-btn-3">立即观看</a>
+              <a
+                href="#"
+                title="立即观看"
+                class="comm-btn c-btn-3"
+                @click="createOrder()"
+              >立即观看</a
+              >
             </section>
           </section>
         </aside>
@@ -205,6 +211,7 @@
 </template>
 <script>
 import course from '@/api/course'
+import order from '@/api/order'
 export default {
   asyncData({ params, error }) {
     return course.getById(params.id).then(response => {
@@ -214,6 +221,17 @@ export default {
         chapterList: response.data.data.courseInfo.chapterAndVideoList
       }
     })
+  },
+  methods: {
+    // 根据课程id，调用接口方法生成订单
+    createOrder() {
+      order.createOrder(this.course.id).then(response => {
+        if (response.data.success) {
+          // 订单创建成功，跳转到订单页面
+          this.$router.push({ path: '/order/' + response.data.data.orderNo })
+        }
+      })
+    }
   }
 }
 </script>
